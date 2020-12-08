@@ -16,3 +16,4 @@ class Teacher(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(choices=TEACHER_TITLE_CHOICE, max_length=8, null=True)
+

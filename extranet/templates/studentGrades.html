@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for instance in object_list %}
+        <p>{{ instance.student.user.username }}  {{ instance.course.name }}</p>
+
+    {% endfor %}
+
+
+</body>
+</html>
