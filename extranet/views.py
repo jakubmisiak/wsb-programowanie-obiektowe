@@ -33,27 +33,30 @@ def index(request):
 def teacher_data(request):
     current_user = request.user
     if Teacher.objects.filter(user=current_user).exists():
-        log_teacher = Teacher.objects.get()
-        current_title = log_teacher.title
-    return render(request, 'teacherHome.html', {'curent_title':current_title})
+        log_teacher = Teacher.objects.get(user=current_user)
+        context = {
+            "log_teacher": log_teacher
+        }
+    return render(request, 'teacherHome.html', context)
 
 @login_required
 def student_data(request):
     current_user = request.user
     if Student.objects.filter(user=current_user).exists():
-        log_student = Student.objects.get()
-        current_index = log_student.index
-        current_group = log_student.student_group
+        log_student = Student.objects.get(user=current_user)
+        context = {
+            "log_student": log_student
+        }
 
-    return render(request, 'userHome.html', {'current_index':current_index})
+    return render(request, 'userHome.html', context)
 
 @login_required
 def students_grades(request):
     current_user = request.user
     if Student.objects.filter(user=current_user).exists():
-        log_student = Student.objects.get()
-        if Grade.objects.filter(student= log_student).exists():
-            current_grade_data = Grade.objects.all()
+        log_student = Student.objects.get(user=current_user)
+        if Grade.objects.filter(student=log_student).exists():
+            current_grade_data = Grade.objects.filter(student=log_student).all()
             context = {
                 "object_list": current_grade_data
             }
@@ -64,9 +67,9 @@ def students_grades(request):
 def teacher_courses(request):
     current_user = request.user
     if Teacher.objects.filter(user=current_user).exists():
-        log_teacher = Teacher.objects.get()
+        log_teacher = Teacher.objects.get(user=current_user)
         if Course.objects.filter(teacher =log_teacher).exists():
-            current_course_data = Course.objects.all()
+            current_course_data = Course.objects.filter(teacher=log_teacher).all()
             context = {
                 "object_list": current_course_data
             }
