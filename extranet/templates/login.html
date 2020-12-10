@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form action="{%  url 'login' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" name="login" value="Login">
-    </form>
+{% extends "layouts/simple.html" %}
 
-</body>
-</html>
+{% block title %}Logowanie{% endblock %}
+
+{% block content %}
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="username" class="form-control">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="form-label">Hasło:</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <div class="d-flex">
+            <button type="submit" class="w-100 btn btn-primary">Zaloguj się</button>
+        </div>
+    </form>
+{% endblock %}

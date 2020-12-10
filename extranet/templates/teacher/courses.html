@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layouts/default.html" %}
+
+{% block title %}Moje przedmioty{% endblock %}
+
+{% block content %}
     {% for instance in object_list %}
         <p>{{ instance.name }}  {{ instance.student_group.name }}</p>
-
     {% endfor %}
-</body>
-</html>
+{% endblock %}

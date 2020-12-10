@@ -1,0 +1,10 @@
+{% extends "layouts/simple.html" %}
+
+{% block title %}Dostęp zabroniony{% endblock %}
+
+{% block content %}
+    <div class="mt-6 text-center">
+        <p class="mb-6">Nie masz dostępu do tej strony!</p>
+        <a href="{% url 'login' %}" class="btn btn-link">Powrót do strony głównej &rarr;</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+body {
+    min-height: 100vh;
+}
+
+label {
+    cursor: pointer;
+}
+
+.wrapper {
+    min-width: 16.25rem;
+    max-width: 20rem;
+    width: 100%;
+}

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <title>{% block title %}{% endblock %} | Extranet</title>
+    {% include "common/head.html" %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/simple.css" %}">
+</head>
+<body class="d-flex justify-content-center align-items-center flex-column">
+    <div class="p-3 m-3 wrapper">
+        <h1 class="mb-3 display-6 text-center pb-1 border-bottom border-2 border-primary text-uppercase">Extranet</h1>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

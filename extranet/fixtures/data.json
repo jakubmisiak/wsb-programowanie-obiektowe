@@ -270,21 +270,21 @@
         }
     },
     {
-        "model": "extranet.Group",
+        "model": "extranet.StudentGroup",
         "pk": 1,
         "fields": {
             "name": "INF K1"
         }
     },
     {
-        "model": "extranet.Group",
+        "model": "extranet.StudentGroup",
         "pk": 2,
         "fields": {
             "name": "INF K2"
         }
     },
     {
-        "model": "extranet.Group",
+        "model": "extranet.StudentGroup",
         "pk": 3,
         "fields": {
             "name": "INF K3"
@@ -292,6 +292,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 1,
         "fields": {
             "user": 4,
             "index": "wr00001",
@@ -300,6 +301,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 2,
         "fields": {
             "user": 5,
             "index": "wr00002",
@@ -308,6 +310,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 3,
         "fields": {
             "user": 6,
             "index": "wr00003",
@@ -316,6 +319,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 4,
         "fields": {
             "user": 7,
             "index": "wr00004",
@@ -324,6 +328,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 5,
         "fields": {
             "user": 8,
             "index": "wr00005",
@@ -332,6 +337,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 6,
         "fields": {
             "user": 9,
             "index": "wr00006",
@@ -340,6 +346,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 7,
         "fields": {
             "user": 10,
             "index": "wr00007",
@@ -348,6 +355,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 8,
         "fields": {
             "user": 11,
             "index": "wr00008",
@@ -356,6 +364,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 9,
         "fields": {
             "user": 12,
             "index": "wr00009",
@@ -364,6 +373,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 10,
         "fields": {
             "user": 13,
             "index": "wr00010",
@@ -372,6 +382,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 11,
         "fields": {
             "user": 14,
             "index": "wr00011",
@@ -380,6 +391,7 @@
     },
     {
         "model": "extranet.Student",
+        "pk": 12,
         "fields": {
             "user": 15,
             "index": "wr00012",
@@ -400,6 +412,60 @@
         "fields": {
             "user": 3,
             "title": "inz"
+        }
+    },
+    {
+        "model": "extranet.Course",
+        "pk": 1,
+        "fields": {
+            "name": "Programownie obiektowe w j. Python",
+            "student_group": 1,
+            "teacher": 1
+        }
+    },
+    {
+        "model": "extranet.Course",
+        "pk": 2,
+        "fields": {
+            "name": "Programownie obiektowe w j. Python",
+            "student_group": 2,
+            "teacher": 1
+        }
+    },
+    {
+        "model": "extranet.Course",
+        "pk": 3,
+        "fields": {
+            "name": "Matematyka 2",
+            "student_group": 2,
+            "teacher": 2
+        }
+    },
+    {
+        "model": "extranet.Course",
+        "pk": 3,
+        "fields": {
+            "name": "Metody numeryczne dla inżynierów",
+            "student_group": 3,
+            "teacher": 2
+        }
+    },
+    {
+        "model": "extranet.Course",
+        "pk": 4,
+        "fields": {
+            "name": "Matematyka 2",
+            "student_group": 1,
+            "teacher": 2
+        }
+    },
+    {
+        "model": "extranet.Course",
+        "pk": 5,
+        "fields": {
+            "name": "Matematyka 2",
+            "student_group": 3,
+            "teacher": 2
         }
     }
 ]

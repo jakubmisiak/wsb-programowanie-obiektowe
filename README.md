@@ -1,4 +1,4 @@
-# django-extranet
+# Extranet
 
 Projekt zaliczeniowy ćwiczeń z przedmiotu Programowanie Obiektowe pod kierownictwem p. Macieja Kotkowskiego.
 
@@ -10,7 +10,7 @@ Projekt zaliczeniowy ćwiczeń z przedmiotu Programowanie Obiektowe pod kierowni
 
 ## Opis projektu
 
-`django-extranet` to projekt w oparciu o framework Django imitujący system wewnętrzny używany przez Wyższą Szkołę
+_Extranet_ to projekt w oparciu o framework Django imitujący system wewnętrzny używany przez Wyższą Szkołę
 Bankową we Wrocławiu.
 
 ### Modele
