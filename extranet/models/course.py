@@ -1,5 +1,5 @@
 from django.db import models
-from extranet.models.studentGroup import StudentGroup
+from extranet.models.student_group import StudentGroup
 from extranet.models.teacher import Teacher
 
 

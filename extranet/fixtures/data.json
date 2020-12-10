@@ -7,8 +7,8 @@
             "last_login": "2020-12-08T18:57:54.420Z",
             "is_superuser": true,
             "username": "superuser",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Super",
+            "last_name": "User",
             "email": "",
             "is_staff": true,
             "is_active": true,
@@ -25,8 +25,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "teacher1",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Prowadzący",
+            "last_name": "1",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -43,8 +43,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "teacher2",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Prowadzący",
+            "last_name": "2",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -61,8 +61,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student1",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "1",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -79,8 +79,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student2",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "2",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -97,8 +97,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student3",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "3",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -115,8 +115,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student4",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "4",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -133,8 +133,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student5",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "5",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -151,8 +151,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student6",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "6",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -169,8 +169,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student7",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "7",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -187,8 +187,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student8",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "8",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -205,8 +205,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student9",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "9",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -223,8 +223,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student10",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "10",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -241,8 +241,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student11",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "11",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -259,14 +259,147 @@
             "last_login": null,
             "is_superuser": false,
             "username": "student12",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Student",
+            "last_name": "12",
             "email": "",
             "is_staff": false,
             "is_active": true,
             "date_joined": "2020-12-08T19:01:24.631Z",
             "groups": [],
             "user_permissions": []
+        }
+    },
+    {
+        "model": "extranet.Group",
+        "pk": 1,
+        "fields": {
+            "name": "INF K1"
+        }
+    },
+    {
+        "model": "extranet.Group",
+        "pk": 2,
+        "fields": {
+            "name": "INF K2"
+        }
+    },
+    {
+        "model": "extranet.Group",
+        "pk": 3,
+        "fields": {
+            "name": "INF K3"
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 4,
+            "index": "wr00001",
+            "student_group": 1
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 5,
+            "index": "wr00002",
+            "student_group": 1
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 6,
+            "index": "wr00003",
+            "student_group": 1
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 7,
+            "index": "wr00004",
+            "student_group": 1
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 8,
+            "index": "wr00005",
+            "student_group": 2
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 9,
+            "index": "wr00006",
+            "student_group": 2
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 10,
+            "index": "wr00007",
+            "student_group": 2
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 11,
+            "index": "wr00008",
+            "student_group": 2
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 12,
+            "index": "wr00009",
+            "student_group": 3
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 13,
+            "index": "wr00010",
+            "student_group": 3
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 14,
+            "index": "wr00011",
+            "student_group": 3
+        }
+    },
+    {
+        "model": "extranet.Student",
+        "fields": {
+            "user": 15,
+            "index": "wr00012",
+            "student_group": 3
+        }
+    },
+    {
+        "model": "extranet.Teacher",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "title": "dr"
+        }
+    },
+    {
+        "model": "extranet.Teacher",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "title": "inz"
         }
     }
 ]

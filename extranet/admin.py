@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models.course import Course
 from .models.grade import Grade
-from .models.studentGroup import StudentGroup
+from .models.student_group import StudentGroup
 from .models.student import Student
 from .models.teacher import Teacher
 
