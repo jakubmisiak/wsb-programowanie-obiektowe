@@ -1,0 +1,60 @@
+{% extends "layouts/default.html" %}
+
+{% block title %}Moje przedmioty: {{ course.name }} ({{ course.student_group.name }}){% endblock %}
+
+{% block nav_links %}
+    {% include "teacher/nav_links.html" %}
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Extranet</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'teacherCourses' %}">Moje przedmioty</a>
+            </li>
+            <li class="breadcrumb-item active">
+                {{ course.name }} ({{ course.student_group.name }})
+            </li>
+        </ol>
+    </nav>
+    <h2 class="border-1 border-bottom border-primary pb-3">
+        {{ course.name }} &raquo; {{ course.student_group.name }}
+    </h2>
+    <div class="mt-4">
+        {% if students %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" class="w-25">Numer indeksu</th>
+                        <th scope="col" class="w-25">Imię</th>
+                        <th scope="col" class="w-25">Nazwisko</th>
+                        <th scope="col" class="w-25">Ocena końcowa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student.index }}</td>
+                            <td>{{ student.user.first_name }}</td>
+                            <td>{{ student.user.last_name }}</td>
+                            <td>-</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="px-5 text-center">Brak prowadzonych przedmiotów.</div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{#{% block scripts %}#}
+{#    {% load static %}#}
+{#    <script src="{% static "js/bootstrap.bundle.min.js" %}" defer></script>#}
+{#    <script src="{% static "js/main.js" %}" defer></script>#}
+{#{% endblock %}#}

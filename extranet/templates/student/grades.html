@@ -7,6 +7,16 @@
 {% endblock %}
 
 {% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Extranet</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Moje oceny
+            </li>
+        </ol>
+    </nav>
     {% for instance in grades %}
         <p>{{ instance.student.user.username }}  {{ instance.course.name }}</p>
     {% endfor %}

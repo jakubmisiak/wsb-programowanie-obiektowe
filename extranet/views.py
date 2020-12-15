@@ -89,12 +89,28 @@ def teacher_courses(request):
     allow_user_type(Teacher, request)
 
     teacher = Teacher.objects.get(user=request.user)
-    current_course_data = Course.objects.filter(teacher=teacher).all()
+    courses = Course.objects.filter(teacher=teacher).all().order_by('student_group__name', 'name')
     context = {
-        "object_list": current_course_data
+        "courses": courses
     }
 
     return render(request, 'teacher/courses.html', context)
+
+
+@login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
+def teacher_course(request, pk):
+    try:
+        teacher = Teacher.objects.get(user=request.user)
+        course = Course.objects.get(pk=pk, teacher=teacher)
+        students = Student.objects.filter(student_group=course.student_group).all().order_by('index')
+        context = {
+            "course": course,
+            "students": students
+        }
+
+        return render(request, 'teacher/course.html', context)
+    except Course.DoesNotExist:
+        return render(request, 'not_found.html')
 
 
 @login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)

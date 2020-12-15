@@ -11,5 +11,6 @@ urlpatterns = [
     path('student/<str:index>', views.view_student_data, name='viewStudentProfile'),
     # Teacher
     path('teacher', views.teacher_data, name='teacherHome'),
-    path('teacher/courses', views.teacher_courses, name='teacherCourses')
+    path('teacher/courses', views.teacher_courses, name='teacherCourses'),
+    path('teacher/courses/<int:pk>', views.teacher_course, name='teacherCourse'),
 ]

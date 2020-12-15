@@ -7,13 +7,41 @@
 {% endblock %}
 
 {% block content %}
-    {% for instance in object_list %}
-        <p>{{ instance.name }}  {{ instance.student_group.name }}</p>
-    {% endfor %}
-{% endblock %}
-
-{% block scripts %}
-    {% load static %}
-    <script src="{% static "js/bootstrap.bundle.min.js" %}" defer></script>
-    <script src="{% static "js/main.js" %}" defer></script>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Extranet</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Moje przedmioty
+            </li>
+        </ol>
+    </nav>
+    <h2 class="border-1 border-bottom border-primary pb-3">Moje przedmioty</h2>
+    <div class="mt-4">
+        {% if courses %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" class="w-25">Grupa studencka</th>
+                        <th scope="col" class="w-75">Nazwa przedmiotu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ course.student_group.name }}</td>
+                            <td>
+                                <a href="{% url 'teacherCourse' course.id %}">{{ course.name }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="px-5 text-center">Brak prowadzonych przedmiotów.</div>
+        {% endif %}
+    </div>
 {% endblock %}
