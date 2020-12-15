@@ -2,8 +2,12 @@
 
 {% block title %}Moje oceny{% endblock %}
 
+{% block nav_links %}
+    {% include "student/nav_links.html" %}
+{% endblock %}
+
 {% block content %}
-    {% for instance in object_list %}
+    {% for instance in grades %}
         <p>{{ instance.student.user.username }}  {{ instance.course.name }}</p>
     {% endfor %}
 {% endblock %}

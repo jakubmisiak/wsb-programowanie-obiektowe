@@ -2,6 +2,10 @@
 
 {% block title %}Moje dane{% endblock %}
 
+{% block nav_links %}
+    {% include "teacher/nav_links.html" %}
+{% endblock %}
+
 {% block content %}
     Tytuł: {{ curent_title }}
     {{ current }}

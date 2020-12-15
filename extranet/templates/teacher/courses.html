@@ -2,8 +2,18 @@
 
 {% block title %}Moje przedmioty{% endblock %}
 
+{% block nav_links %}
+    {% include "teacher/nav_links.html" %}
+{% endblock %}
+
 {% block content %}
     {% for instance in object_list %}
         <p>{{ instance.name }}  {{ instance.student_group.name }}</p>
     {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <script src="{% static "js/bootstrap.bundle.min.js" %}" defer></script>
+    <script src="{% static "js/main.js" %}" defer></script>
 {% endblock %}

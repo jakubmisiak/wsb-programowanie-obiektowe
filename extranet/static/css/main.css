@@ -1,0 +1,23 @@
+.navbar-brand {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+.navbar .nav-link {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0.95);
+    display: inline-block;
+    margin: 0 1rem;
+    padding: 0.125rem 0;
+    transition: border-bottom-color 0.2s ease-in-out;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+    text-transform: uppercase;
+}
+
+.navbar .nav-link:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.navbar .nav-link:active {
+    border-bottom-color: rgba(255, 255, 255, 0.45);
+}

@@ -2,7 +2,11 @@
 
 {% block title %}Panel studenta{% endblock %}
 
+{% block nav_links %}
+    {% include "student/nav_links.html" %}
+{% endblock %}
+
 {% block content %}
-    {{ log_student.user.username }} <br>
-    {{ log_student.index }}
+    <h2 class="border-1 border-bottom border-primary pb-3">Moje dane</h2>
+    {% include "student/personal_data.html" with student=student %}
 {% endblock %}

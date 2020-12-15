@@ -7,9 +7,20 @@
     <link rel="stylesheet" href="{% static "css/main.css" %}">
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <header class="navbar navbar-light bg-primary bg-gradient">
+        <div class="container-fluid">
+            <a class="navbar-brand text-uppercase text-white" href="{% url 'home' %}">Extranet</a>
+            <nav class="nav">
+                {% block nav_links %}{% endblock %}
+                <a class="nav-link" href="{% url 'logout' %}">Wyloguj</a>
+            </nav>
+        </div>
+    </header>
 
-    <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
-    <script src="{% static "js/main.js" %}"></script>
+    <div class="container-lg my-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}{% endblock %}
 </body>
 </html>

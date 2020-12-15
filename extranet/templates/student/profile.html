@@ -1,7 +1,12 @@
 {% extends "layouts/default.html" %}
 
-{% block title %}Moje dane{% endblock %}
+{% block title %}Profil studenta{% endblock %}
+
+{% block nav_links %}
+    {% include "teacher/nav_links.html" %}
+{% endblock %}
 
 {% block content %}
-    Numer indeksu: {{ current_index }}
+    <h2 class="border-1 border-bottom border-primary pb-3">Dane studenta</h2>
+    {% include "student/personal_data.html" with student=student %}
 {% endblock %}
