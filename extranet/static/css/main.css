@@ -21,3 +21,15 @@
 .navbar .nav-link:active {
     border-bottom-color: rgba(255, 255, 255, 0.45);
 }
+
+.grade-positive {
+    color: #02801c;
+}
+
+.grade-negative {
+    color: #a52834;
+}
+
+.text-right {
+    text-align: right;
+}

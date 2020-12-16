@@ -25,36 +25,58 @@
     </h2>
     <div class="mt-4">
         {% if students %}
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col" class="w-25">Numer indeksu</th>
-                        <th scope="col" class="w-25">Imię</th>
-                        <th scope="col" class="w-25">Nazwisko</th>
-                        <th scope="col" class="w-25">Ocena końcowa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for student in students %}
+            <form action="{% url 'teacherCourseUpdate' course.id %}" method="post">
+                {% csrf_token %}
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <th scope="row">{{ forloop.counter }}</th>
-                            <td>{{ student.index }}</td>
-                            <td>{{ student.user.first_name }}</td>
-                            <td>{{ student.user.last_name }}</td>
-                            <td>-</td>
+                            <th scope="col">#</th>
+                            <th scope="col" class="w-25">Numer indeksu</th>
+                            <th scope="col" class="w-25">Imię i nazwisko</th>
+                            <th scope="col" class="w-25">Ocena końcowa</th>
+                            <th scope="col" class="w-25">Nowa ocena</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ student.index }}</td>
+                                <td>
+                                    <a href="{% url 'viewStudentProfile' student.index %}">
+                                        {{ student.user.get_full_name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {% for grade in student_grades %}
+                                        {% if grade.student.id == student.id %}
+                                            {% include "common/grade.html" with value=grade.value %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <select class="form-select form-select-sm" name="student_grade_{{ student.id }}">
+                                        <option value="0">---</option>
+                                        {% for grade_value, grade_label in grades %}
+                                            <option value="{{ grade_value }}">{{ grade_label }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>
+                                <button class="btn btn-success text-uppercase">Zapisz zmiany</button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
         {% else %}
             <div class="px-5 text-center">Brak prowadzonych przedmiotów.</div>
         {% endif %}
     </div>
 {% endblock %}
-
-{#{% block scripts %}#}
-{#    {% load static %}#}
-{#    <script src="{% static "js/bootstrap.bundle.min.js" %}" defer></script>#}
-{#    <script src="{% static "js/main.js" %}" defer></script>#}
-{#{% endblock %}#}

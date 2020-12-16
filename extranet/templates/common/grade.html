@@ -1,0 +1,7 @@
+{% if value %}
+    <b class="{% if value > 2.0 %}grade-positive{% else %}grade-negative{% endif %}">
+        {{ value }}
+    </b>
+{% else %}
+    -
+{% endif %}

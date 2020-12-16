@@ -15,21 +15,5 @@
         </ol>
     </nav>
     <h2 class="border-1 border-bottom border-primary pb-3">Moje dane</h2>
-    <div class="grid mt-4">
-        <div class="row">
-            <div class="col col-sm-3">
-                {% include "common/avatar.html" with username=teacher.user.username %}
-            </div>
-            <div class="col col-sm-9">
-                <dl>
-                    <dt>Tytuł naukowy</dt>
-                    <dd>{{ teacher.title }}</dd>
-                    <dt>Imię i nazwisko</dt>
-                    <dd>{{ teacher.user.first_name }} {{ teacher.user.last_name }}</dd>
-                    <dt>Adres e-mail</dt>
-                    <dd>{{ teacher.user.email }}</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
+    {% include "teacher/personal_data.html" with teacher=teacher %}
 {% endblock %}

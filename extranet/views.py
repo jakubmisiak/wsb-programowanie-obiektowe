@@ -41,15 +41,23 @@ def user_logout(request):
     return redirect(LOGIN_PATH_NAME)
 
 
-def allow_user_type(user_type, request):
-    if not user_type.objects.filter(user=request.user).exists():
-        return render(request, 'no_access.html')
+def is_student(user):
+    return Student.objects.filter(user=user).exists()
+
+
+def is_teacher(user):
+    return Teacher.objects.filter(user=user).exists()
+
+
+def render_no_access_page(request):
+    return render(request, 'no_access.html')
 
 
 # Student
 @login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
 def student_data(request):
-    allow_user_type(Student, request)
+    if not is_student(request.user):
+        return render_no_access_page(request)
 
     student = Student.objects.get(user=request.user)
     context = {
@@ -61,20 +69,46 @@ def student_data(request):
 
 @login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
 def students_grades(request):
-    allow_user_type(Student, request)
+    if not is_student(request.user):
+        return render_no_access_page(request)
 
     student = Student.objects.get(user=request.user)
+    courses = Course.objects.filter(student_group=student.student_group).all()
+    grades = []
+
+    if courses:
+        grades = Grade.objects.filter(student=student).all()
+
     context = {
-        "grades": Grade.objects.filter(student=student).all()
+        "courses": courses,
+        "grades": grades,
     }
 
     return render(request, 'student/grades.html', context)
 
 
+@login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
+def view_teacher_data(request, pk):
+    if not request.user.is_authenticated:
+        return redirect(LOGIN_PATH_NAME)
+
+    try:
+        teacher = Teacher.objects.get(pk=pk)
+        context = {
+            "teacher": teacher
+        }
+
+        return render(request, 'teacher/profile.html', context)
+
+    except Teacher.DoesNotExist:
+        return render(request, 'not_found.html')
+
+
 # Teacher
 @login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
 def teacher_data(request):
-    allow_user_type(Teacher, request)
+    if not is_teacher(request.user):
+        return render_no_access_page(request)
 
     teacher = Teacher.objects.get(user=request.user)
     context = {
@@ -86,7 +120,8 @@ def teacher_data(request):
 
 @login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
 def teacher_courses(request):
-    allow_user_type(Teacher, request)
+    if not is_teacher(request.user):
+        return render_no_access_page(request)
 
     teacher = Teacher.objects.get(user=request.user)
     courses = Course.objects.filter(teacher=teacher).all().order_by('student_group__name', 'name')
@@ -102,9 +137,13 @@ def teacher_course(request, pk):
     try:
         teacher = Teacher.objects.get(user=request.user)
         course = Course.objects.get(pk=pk, teacher=teacher)
+        grades = Grade.VALUES
         students = Student.objects.filter(student_group=course.student_group).all().order_by('index')
+        student_grades = Grade.objects.filter(course=course).all()
         context = {
             "course": course,
+            "grades": grades,
+            "student_grades": student_grades,
             "students": students
         }
 
@@ -114,8 +153,46 @@ def teacher_course(request, pk):
 
 
 @login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
+def update_course_grades(request, pk):
+    if not request.method == 'POST':
+        return redirect('teacherCourse', pk)
+
+    try:
+        teacher = Teacher.objects.get(user=request.user)
+        course = Course.objects.get(pk=pk, teacher=teacher)
+        form_data = request.POST.copy()
+
+        del form_data["csrfmiddlewaretoken"]
+
+        for field_name in form_data:
+            student_id = field_name[-1:]
+            student = Student.objects.get(pk=student_id)
+            new_grade_value = float(form_data[field_name])
+
+            if new_grade_value > 0.0:
+                try:
+                    grade = Grade.objects.get(course=course, student=student)
+                    print(grade.student.user.get_full_name(), grade.value, new_grade_value)
+                    grade.value = new_grade_value
+                    grade.save()
+                except Grade.DoesNotExist:
+                    new_grade = Grade()
+                    new_grade.course = course
+                    new_grade.student = student
+                    new_grade.value = new_grade_value
+                    print("new_grade", new_grade.value)
+                    new_grade.save()
+
+        return redirect("teacherCourse", pk)
+
+    except (Teacher.DoesNotExist, Course.DoesNotExist, Student.DoesNotExist):
+        return redirect("teacherCourse", pk)
+
+
+@login_required(None, REDIRECT_FIELD_NAME, LOGIN_PATH_NAME)
 def view_student_data(request, index):
-    allow_user_type(Teacher, request)
+    if not is_teacher(request.user):
+        return render_no_access_page(request)
 
     try:
         student = Student.objects.get(index=index)

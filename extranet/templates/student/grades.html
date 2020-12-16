@@ -17,7 +17,48 @@
             </li>
         </ol>
     </nav>
-    {% for instance in grades %}
-        <p>{{ instance.student.user.username }}  {{ instance.course.name }}</p>
-    {% endfor %}
+    <div class="mt-4">
+        {% if courses %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" class="w-50">Nazwa przedmiotu</th>
+                        <th scope="col" class="w-25">Wykładowca</th>
+                        <th scope="col" class="w-25">Ocena końcowa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>
+                                {{ course.name }}<br />
+                            </td>
+                            <td>
+                                <a href="{% url 'viewTeacherProfile' course.teacher.id %}">
+                                    {{ course.teacher.user.get_full_name }}
+                                </a>
+                            </td>
+                            <td>
+                                {% if grades %}
+                                    {% for grade in grades %}
+                                        {% if grade.course.id == course.id %}
+                                            {% include "common/grade.html" with value=grade.value %}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="px-5 text-center">Brak ocen w systemie.</div>
+        {% endif %}
+    </div>
 {% endblock %}

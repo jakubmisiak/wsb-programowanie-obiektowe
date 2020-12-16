@@ -1,0 +1,25 @@
+{% extends "layouts/default.html" %}
+
+{% block title %}Profil wykładowcy{% endblock %}
+
+{% block nav_links %}
+    {% include "student/nav_links.html" %}
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Extranet</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'studentGrades' %}">Moje oceny</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Profil wykładowcy
+            </li>
+        </ol>
+    </nav>
+    <h2 class="border-1 border-bottom border-primary pb-3">Dane wykładowcy</h2>
+    {% include "teacher/personal_data.html" with teacher=teacher %}
+{% endblock %}
